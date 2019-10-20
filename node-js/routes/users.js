@@ -1,3 +1,4 @@
+const asyncMiddleware = require('../middleware/async');
 const { User, validate } = require('../models/users');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
