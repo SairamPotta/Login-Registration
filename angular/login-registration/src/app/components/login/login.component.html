@@ -1,0 +1,28 @@
+<mat-card class="login-container col-md-4 col-sm-6 col-xs-8 card container-fluid">
+    <header class="text-left font-18 font-weight-bold">Login</header>
+    <form #loginForm="ngForm" 
+    (ngSubmit)="loginForm.valid && validate(loginForm.value)">
+        <div>
+            <mat-form-field appearance="outline" class="col-12 p-0 font-14 ">
+                <mat-label>Email Id</mat-label>
+                <input matInput type="text" name="emailId" id="emailId" autocomplete="off" required
+                    #emailId="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [(ngModel)]="login.emailId">
+                <mat-icon *ngIf="emailId.invalid && emailId.errors && (emailId.touched || emailId.dirty || loginForm.submitted)"
+                    matSuffix [matTooltip]="getMessage(emailId)" color="primary" class="error">error</mat-icon>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="col-12 p-0 font-14 ">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" id="password" autocomplete="off" required
+                    #password="ngModel" [(ngModel)]="login.password">
+                <mat-icon *ngIf="password.invalid && password.errors && (password.touched || password.dirty || loginForm.submitted)"
+                    matSuffix [matTooltip]="getMessage(password)" color="primary" class="error">error</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="d-flex mt-1 justify-content-between flex-row-reverse">
+            <button mat-raised-button color="primary" type="submit" class="font-14">Submit</button>
+            <button mat-button class="font-14" routerLink='/registration'>Create account</button>
+        </div>
+    </form>
+</mat-card>
